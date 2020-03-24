@@ -94,7 +94,7 @@ public class PortfolioServiceImpl implements PortfolioService {
       if (ar.succeeded()) {
         HttpResponse<JsonObject> response = ar.result();
         if (response.statusCode() == 200) {
-          double v = numberOfShares * response.body().toJsonObject().getDouble("bid");
+          double v =  numberOfShares * (Double)response.body().getMap().get("bid");
           future.complete(v);
         } else {
           future.complete(0.0);

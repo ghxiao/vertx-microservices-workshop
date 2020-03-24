@@ -48,7 +48,7 @@ public class DashboardVerticle extends MicroServiceVerticle {
     ServiceDiscoveryRestEndpoint.create(router, discovery);
 
     // Last operations
-    router.get("/operations").handler(this::callAuditServiceWithExceptionHandlerWithCircuitBreaker);
+    router.get("/operations").handler(this::callAuditServiceTimeoutWithCircuitBreaker);
 
     // Static content
     router.route("/*").handler(StaticHandler.create());
